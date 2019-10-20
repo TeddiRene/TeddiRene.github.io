@@ -4,7 +4,7 @@
 <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
 <button
   style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
-  id="checkout-button-sku_G1XqHw9CSBrIGf"
+  id="checkout-button-sku_G1XvAkXYS0zbaF"
   role="link"
 >
   Checkout
@@ -14,14 +14,14 @@
 
 <script>
 (function() {
-  var stripe = Stripe('pk_live_Ree6XLq6Adt26kOWDylYYjah');
+  var stripe = Stripe('pk_test_aFMZXcLIz1KHrlOn0KssdjCu');
 
-  var checkoutButton = document.getElementById('checkout-button-sku_G1XqHw9CSBrIGf');
+  var checkoutButton = document.getElementById('checkout-button-sku_G1XvAkXYS0zbaF');
   checkoutButton.addEventListener('click', function () {
     // When the customer clicks on the button, redirect
     // them to Checkout.
     stripe.redirectToCheckout({
-      items: [{sku: 'sku_G1XqHw9CSBrIGf', quantity: 1}],
+      items: [{sku: 'sku_G1XvAkXYS0zbaF', quantity: 1}],
 
       // Do not rely on the redirect to the successUrl for fulfilling
       // purchases, customers may not always reach the success_url after

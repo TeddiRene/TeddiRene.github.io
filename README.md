@@ -1,50 +1,51 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <title>Brown Bears</title>
-</head>
-
 <body>
-  <a href="./index.html">Brown Bear</a>
-  <a href="./aboutme.html">About Me</a>
-  <h1>The Brown Bear</h1>
-  <ul>
-    <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#habitat">Habitat</a></li>
-    <li><a href="#media">Media</a></li>
-  </ul>
-  <div id="introduction">
-    <h2>About Brown Bears</h2>
-    <p>The brown bear (<em>Ursus arctos</em>) is native to parts of northern Eurasia and North America. Its conservation status is currently <strong>Least Concern</strong>.<br /><br /> There are many subspecies within the brown bear species, including the
-      Atlas bear and the Himalayan brown bear.</p>
-    <a href="https://en.wikipedia.org/wiki/Brown_bear" target="_blank">Learn More</a>
-    <h3>Species</h3>
-    <ul>
-      <li>Arctos</li>
-      <li>Collarus</li>
-      <li>Horribilis</li>
-      <li>Nelsoni (extinct)</li>
-    </ul>
-    <h3>Features</h3>
-    <p>Brown bears are not always completely brown. Some can be reddish or yellowish. They have very large, curved claws and huge paws. Male brown bears are often 30% larger than female brown bears. They can range from 5 feet to 9 feet from head to toe.</p>
-  </div>
-  <div id="habitat">
-    <h2>Habitat</h2>
-    <h3>Countries with Large Brown Bear Populations</h3>
-    <ol>
-      <li>Russia</li>
-      <li>United States</li>
-      <li>Canada</li>
-    </ol>
-    <h3>Countries with Small Brown Bear Populations</h3>
-    <p>Some countries with smaller brown bear populations include Armenia, Belarus, Bulgaria, China, Finland, France, Greece, India, Japan, Nepal, Poland, Romania, Slovenia, Turkmenistan, and Uzbekistan.</p>
-  </div>
-  <div id="media">
-    <h2>Media</h2>
-    <a href="https://en.wikipedia.org/wiki/Brown_bear" target="_blank"><img src="https://s3.amazonaws.com/codecademy-content/courses/web-101/web101-image_brownbear.jpg"/></a>
-    <video src="https://s3.amazonaws.com/codecademy-content/courses/freelance-1/unit-1/lesson-2/htmlcss1-vid_brown-bear.mp4" height="240" width="320" controls>Video not supported</video>
-  </div>
+  <!-- Load Stripe.js on your website. -->
+<script src="https://js.stripe.com/v3"></script>
+
+<!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
+<button
+  style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+  id="checkout-button-sku_G1XqHw9CSBrIGf"
+  role="link"
+>
+  Checkout
+</button>
+
+<div id="error-message"></div>
+
+<script>
+(function() {
+  var stripe = Stripe('pk_live_Ree6XLq6Adt26kOWDylYYjah');
+
+  var checkoutButton = document.getElementById('checkout-button-sku_G1XqHw9CSBrIGf');
+  checkoutButton.addEventListener('click', function () {
+    // When the customer clicks on the button, redirect
+    // them to Checkout.
+    stripe.redirectToCheckout({
+      items: [{sku: 'sku_G1XqHw9CSBrIGf', quantity: 1}],
+
+      // Do not rely on the redirect to the successUrl for fulfilling
+      // purchases, customers may not always reach the success_url after
+      // a successful payment.
+      // Instead use one of the strategies described in
+      // https://stripe.com/docs/payments/checkout/fulfillment
+      successUrl: window.location.protocol + '//TeddiRene.com/success',
+      cancelUrl: window.location.protocol + '//TeddiRene.com/canceled',
+    })
+    .then(function (result) {
+      if (result.error) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer.
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+})();
+</script>
 </body>
 
 </html>

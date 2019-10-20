@@ -1,3 +1,4 @@
+<!DOCTYPE html> 
 <!-- Load Stripe.js on your website. -->
 <script src="https://js.stripe.com/v3"></script>
 
@@ -42,3 +43,4 @@
   });
 })();
 </script>
+</html>

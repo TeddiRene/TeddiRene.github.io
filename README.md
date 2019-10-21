@@ -1,4 +1,7 @@
-<body>
+<DOCTYPE html>
+  <head></head>
+  
+  <body>
   <!-- Load Stripe.js on your website. -->
 <script src="https://js.stripe.com/v3"></script>
 
@@ -44,3 +47,4 @@
 })();
 </script>
   </body>
+</html>
